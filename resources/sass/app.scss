@@ -1,0 +1,27 @@
+$grid-gutter-width: 2rem;
+/* The following line can be included in a src/App.scss */
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
+.bg-blog-main {
+  background: linear-gradient(to bottom, hsl(231.43deg 53.85% 97.45% / 52%), hsl(63.67deg 72.06% 26.67% / 73%)), url('../../public/img/bg_home.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: local;
+}
+
+.b-divider {
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, .1), inset 0 0.125em 0.5em rgba(0, 0, 0, .15);
+}
