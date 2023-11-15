@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/{path?}', 'welcome')
-    ->whereIn('path', ['result', '/', 'details.*']);
+    ->whereIn('path', ['result', '/', 'details.*', 'newpost']);
