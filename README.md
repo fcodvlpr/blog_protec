@@ -1,66 +1,149 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Blog Protec
 
-## About Laravel
+It is a small website that lists blogs, you can see the detail, it manages to perform a search and allows you to add a new post.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Authors
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [@fcodvlpr](https://github.com/fcodvlpr)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🚀 About Me
+Hi, my name is Francisco de la Cruz, Computer Systems Engineer, I am currently in the IT area where I work as a Full Stack Developer. 
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+DB Administrator, Cloud Services, Microservices, API, Mobile APP Development, among others. 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+In the same way I lead a group of colleagues in improving the functionality of various projects. I also take control, monitoring and maintenance of some microservices, API's and App's both mobile and web.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Features
 
-### Premium Partners
+- Live previews
+- Fullscreen mode
+- Cross platform
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+## Roadmap
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Additional browser support
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## API Reference
 
-## Security Vulnerabilities
+#### Get all items
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```http
+  GET /api/blogs
+```
 
-## License
+#### Get item
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```http
+  GET /api/blogs/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+
+#### Search items
+
+```http
+  GET /api/search/${term}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `term`    | `string` | **Required**. Term to search      |
+
+
+#### Add new item
+
+```http
+  POST /api/blogs
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `title`   | `string` | **Required**. Title of item       |
+| `author`  | `string` | **Required**. Author of item      |
+| `content` | `string` | **Required**. Content of item     |
+| `image`   | `string` | **Required**. image of item       |
+
+## Run Locally
+Install XAMPP
+
+- [How install XAMPP](https://www.ionos.mx/digitalguide/servidores/herramientas/instala-tu-servidor-local-xampp-en-unos-pocos-pasos/)
+
+Clone the project
+
+```bash
+  git clone https://github.com/fcodvlpr/blog_protec.git
+```
+
+Go to the project directory
+
+```bash
+  cd blog_protec
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+
+  php -S http://127.1.2.3:4567 -t public
+```
+
+## Import DB
+
+*The database is scripted under the following path:* **blog_protec/db/**
+
+*Name database:* **blog.sql**
+
+- [How import Database](https://help.one.com/hc/es/articles/115005588189--C%C3%B3mo-importar-una-base-de-datos-a-phpMyAdmin-)
+
+## Tech Stack
+
+**Client:** 
+- [React](https://es.react.dev/)
+- [Redux](https://redux.js.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [CKeditor](https://ckeditor.com/)
+- [Vite](https://vitejs.dev/)
+- [Fortawesome](https://fortawesome.com/)
+- [SASS](https://sass-lang.com/)
+- [Axios](https://axios-http.com/es/docs/intro)
+- [React Router Dom](https://reactrouter.com/en/main)
+
+
+**Server:**
+- [Node](https://nodejs.org/en)
+- [Laravel](https://laravel.com/)
+- [MySql](https://www.mysql.com/)
+- [Phph](https://www.php.net/manual/es/intro-whatis.php)
+
+
+## Screenshots
+
+### Home
+![Home](https://raw.githubusercontent.com/fcodvlpr/blog_protec/main/preview/home.jpeg)
+
+### Details
+![Details](https://raw.githubusercontent.com/fcodvlpr/blog_protec/main/preview/details.jpeg)
+
+### Find
+![Find](https://raw.githubusercontent.com/fcodvlpr/blog_protec/main/preview/find.jpeg)
+
+### New Post
+![New Post](https://raw.githubusercontent.com/fcodvlpr/blog_protec/main/preview/new_post.jpeg)
+
+### Button new post
+![Button New Post](https://raw.githubusercontent.com/fcodvlpr/blog_protec/main/preview/button_add_new_post.jpeg)
