@@ -1,12 +1,26 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ItemBlog from "../components/ItemBlog";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBlogs } from '../actions/search';
+
 const Home = () => {
+
+  const dispatch = useDispatch();
+
+  const {
+    data: blogs = [],
+  } = useSelector(state => state.search);
+
+  useEffect(() => {
+    dispatch(getAllBlogs());
+  }, [dispatch]);
   return (
     <>
       <Header />
@@ -30,8 +44,9 @@ const Home = () => {
             <h3 className="fst-italic font-weight-bold">Recent posts</h3>
             <a className="btn btn-sm btn-outline-primary font-weight-bold" href="/newpost">Add new post</a>
           </Col>
-          <ItemBlog />
-
+          {
+            blogs.map((blog, indexBlog) => <ItemBlog key={indexBlog} blog={blog} />)
+          }
         </Row>
       </Container>
       <Footer />

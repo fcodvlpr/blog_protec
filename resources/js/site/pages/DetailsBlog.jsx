@@ -1,13 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from 'react-router-dom';
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import RecentBlogs from "../components/RecentBlogs";
 
+import { getBlogById } from '../actions/search';
+import { formatDate } from "../utils/tools";
+
 const DetailsBlog = () => {
+  const { id } = useParams();
+
+  const dispatch = useDispatch();
+
+  const {
+    detail_blog = {},
+  } = useSelector(state => state.search);
+
+  useEffect(() => {
+    dispatch(getBlogById(id));
+  }, [dispatch]);
+
+  const {
+    author = '',
+    content = '',
+    image = '',
+    start_date = '',
+    title = '',
+  } = detail_blog;
+
   return (
     <>
     <Header />
@@ -15,20 +41,15 @@ const DetailsBlog = () => {
       <Row className="mb-2">
         <Col md={8}>
         <article className="blog-post">
-          <h2 className="display-5 link-body-emphasis mb-1">Sample blog post</h2>
-          <p className="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
-
-          <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
-          <hr />
-          <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-          <h2>Blockquotes</h2>
-          <p>This is an example blockquote in action:</p>
-          <blockquote className="blockquote">
-            <p>Quoted text goes here.</p>
-          </blockquote>
-          <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-          <h3>Example lists</h3>
-          <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
+          <h2 className="display-5 link-body-emphasis mb-1">{title}</h2>
+          <p className="blog-post-meta">{formatDate(start_date)} by <a href="#">{author}</a></p>
+          <hr className="w-100 d-block" />
+          <Image 
+            className="d-inline mb-3 ms-3 float-end"
+            height={350}
+            src={image}
+          />
+          {content}
         </article>
         </Col>
         <Col md={4}>

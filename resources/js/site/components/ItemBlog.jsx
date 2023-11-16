@@ -4,19 +4,30 @@ import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Image from 'react-bootstrap/Image';
+import { crearURL, formatDate } from '../utils/tools';
 
-const ItemBlog = ({ columns = 6}) => {
+const ItemBlog = ({columns = 6, blog  = {}}) => {
+
+  const {
+    author = '',
+    blog_id = '',
+    content = '',
+    image = '',
+    start_date = '',
+    title = '',
+  } = blog;
+
   return (
     <Col md={columns}>
       <Row className="g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <Col className="p-4 d-flex flex-column position-static">
-          <strong className="d-inline-block mb-2 text-primary-emphasis">World</strong>
-          <h3 className="mb-0">Featured post</h3>
-          <div className="mb-1 text-body-secondary">Nov 12</div>
+          <strong className="d-inline-block mb-2 text-primary-emphasis">{author}</strong>
+          <h3 className="mb-0">{title}</h3>
+          <div className="mb-1 text-body-secondary small my-2">{formatDate(start_date)}</div>
           <p className="card-text mb-auto">
-            This is a wider card with supporting text below as a natural lead-in to additional content.
+            {content.substring(0,69)}...
           </p>
-          <a href="/details" className="icon-link gap-1 icon-link-hover stretched-link">
+          <a href={`/details/${blog_id}/${crearURL(title)}`} className="icon-link gap-1 icon-link-hover stretched-link">
             Continue reading
             <FontAwesomeIcon icon={faChevronRight} />
           </a>
@@ -25,7 +36,7 @@ const ItemBlog = ({ columns = 6}) => {
           <Image 
             height={250} 
             width={200} 
-            src="https://images.pexels.com/photos/18892582/pexels-photo-18892582/free-photo-of-nieve-madera-paisaje-agua.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src={image}
           />
         </Col>
       </Row>

@@ -28,9 +28,6 @@ class BlogController extends Controller
             $status = $th->getCode();
             $message = $th->getMessage();
 
-            // Log::info($status);
-            // Log::info($message);
-
             return Response::json(['error' => $message], $status);
         }
     }
@@ -52,15 +49,12 @@ class BlogController extends Controller
                 $request->image,
             ));
 
-            return Response::json(["message" => "Success"]);
+            return Response::json(["message" => "Success"], 201);
         } catch (\Throwable $th) {
             $status = $th->getCode();
             $message = $th->getMessage();
 
-            // Log::info($status);
-            // Log::info($message);
-
-            return Response::json(['error' => $message], $status);
+            return Response::json(['error' => $message], 500);
         }
     }
 
@@ -79,10 +73,7 @@ class BlogController extends Controller
             $status = $th->getCode();
             $message = $th->getMessage();
 
-            // Log::info($status);
-            // Log::info($message);
-
-            return Response::json(['error' => $message], $status);
+            return Response::json(['error' => $message], 500);
         }
     }
 
@@ -101,10 +92,7 @@ class BlogController extends Controller
             $status = $th->getCode();
             $message = $th->getMessage();
 
-            // Log::info($status);
-            // Log::info($message);
-
-            return Response::json(['error' => $message], $status);
+            return Response::json(['error' => $message], 500);
         }
     }
 }

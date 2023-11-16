@@ -1,11 +1,13 @@
 import {
   RETRIEVE_SEARCH,
+  RETRIEVE_BLOG,
   SAVE_SEARCH,
 } from "../actions/types";
 
 const initialState = {
   data: [],
   find: '',
+  detail_blog: [],
 };
 
 const actionsMap = {
@@ -17,6 +19,11 @@ const actionsMap = {
   [SAVE_SEARCH]: (state, action) => ({
     ...state,
     find: action.payload,
+  }),
+
+  [RETRIEVE_BLOG]: (state, action) => ({
+    ...state,
+    detail_blog: action.payload,
   }),
 };
 
