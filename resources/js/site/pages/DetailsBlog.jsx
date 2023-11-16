@@ -16,6 +16,8 @@ import { formatDate } from "../utils/tools";
 const DetailsBlog = () => {
   const { id } = useParams();
 
+  const parser  = new DOMParser();
+
   const dispatch = useDispatch();
 
   const {
@@ -49,7 +51,8 @@ const DetailsBlog = () => {
             height={350}
             src={image}
           />
-          {content}
+          <div dangerouslySetInnerHTML={{__html: content}} />
+          
         </article>
         </Col>
         <Col md={4}>

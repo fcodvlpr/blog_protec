@@ -1,4 +1,5 @@
 import {
+  NEW_BLOG,
   RETRIEVE_BLOG,
   RETRIEVE_SEARCH,
   SAVE_SEARCH,
@@ -53,6 +54,23 @@ export const getBlogById = blog_id => async (dispatch) => {
     dispatch({
       type: RETRIEVE_BLOG,
       payload: detail_blog,
+    });
+  } catch (err) {
+    console.log({errorGetSearch: err});
+  }
+}
+
+export const newBlog = new_blog => async (dispatch) => {
+  try {
+    const response = await Search.newBlog(new_blog);
+
+    const {
+      data = [],
+    } = response;
+
+    dispatch({
+      type: NEW_BLOG,
+      payload: data,
     });
   } catch (err) {
     console.log({errorGetSearch: err});

@@ -12,10 +12,15 @@ const getBlogById = blog_id => {
   return http.get(`/blogs/${blog_id}`);
 }
 
+const newBlog = data => {
+  return http.post(`/blogs`, data);
+}
+
 const Blogs = {
   getSearch,
   getAllBlogs,
   getBlogById,
+  newBlog,
 };
 
 

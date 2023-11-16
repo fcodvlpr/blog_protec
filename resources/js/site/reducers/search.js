@@ -1,4 +1,5 @@
 import {
+  NEW_BLOG,
   RETRIEVE_SEARCH,
   RETRIEVE_BLOG,
   SAVE_SEARCH,
@@ -8,6 +9,7 @@ const initialState = {
   data: [],
   find: '',
   detail_blog: [],
+  new_blog: 0,
 };
 
 const actionsMap = {
@@ -24,6 +26,11 @@ const actionsMap = {
   [RETRIEVE_BLOG]: (state, action) => ({
     ...state,
     detail_blog: action.payload,
+  }),
+
+  [NEW_BLOG]: (state, action) => ({
+    ...state,
+    new_blog: action.payload,
   }),
 };
 

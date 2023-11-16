@@ -24,8 +24,7 @@ const ItemBlog = ({columns = 6, blog  = {}}) => {
           <strong className="d-inline-block mb-2 text-primary-emphasis">{author}</strong>
           <h3 className="mb-0">{title}</h3>
           <div className="mb-1 text-body-secondary small my-2">{formatDate(start_date)}</div>
-          <p className="card-text mb-auto">
-            {content.substring(0,69)}...
+          <p className="card-text mb-auto" dangerouslySetInnerHTML={{__html: content.substring(0,69)}}>
           </p>
           <a href={`/details/${blog_id}/${crearURL(title)}`} className="icon-link gap-1 icon-link-hover stretched-link">
             Continue reading
